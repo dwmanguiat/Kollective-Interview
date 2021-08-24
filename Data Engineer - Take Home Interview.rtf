@@ -1,0 +1,121 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fswiss\fcharset0 Helvetica-Oblique;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid101\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{lower-alpha\}.}{\leveltext\leveltemplateid102\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\lin1440 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid201\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listlevel\levelnfc4\levelnfcn4\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{lower-alpha\}.}{\leveltext\leveltemplateid202\'02\'01.;}{\levelnumbers\'01;}\fi-360\li1440\lin1440 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}.}{\leveltext\leveltemplateid301\'02\'00.;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid4}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}}
+\margl1440\margr1440\vieww14140\viewh18900\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Kollective\'92s ECDN platform optimizes corporate network bandwidth by peer-assisted delivery of video content.  \
+\
+In this paradigm, an individual employee viewing a live broadcast video will try to source as much content from a nearby 
+\f1\b peer
+\f0\b0 , e.g. a coworker in the same office who is also watching the video.  If it cannot find a video segment from a peer, it will download it from the original 
+\f1\b origin
+\f0\b0  over the internet.\
+\
+Kollective wants to highlight the value of our peer-to-peer system to our customers.  To do this, we track every downloaded video segment, either from a peer or an origin, and store these as a list of 
+\f1\b transfers
+\f0\b0 .  \
+\
+By showing the customer how much content was peered vs. how much was downloaded from origin, we can demonstrate the 
+\f2\i bandwidth savings
+\f0\i0  that the Kollective platform is providing for their network.\
+\
+Consider a transfer to have the following data fields:\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	\uc0\u8226 	}t : timestamp		(the time of the transfer)\
+{\listtext	\uc0\u8226 	}type : [origin|peer]	(whether the transfer was from a peer or from origin)\
+{\listtext	\uc0\u8226 	}size: int4		(the size, in bytes, of the downloaded content)\
+{\listtext	\uc0\u8226 	}duration : int4	(the duration in milliseconds that it took for the transfer to complete)\
+{\listtext	\uc0\u8226 	}source_id: string	(for peer transfers, a UUID for the peer/coworker.  Null for origin transfers)\
+{\listtext	\uc0\u8226 	}dest_id: string	(a UUID for the viewer who is downloading the video stream)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+
+\f1\b \
+Python Questions:
+\f0\b0 \
+\
+Using any python libraries of your choosing (e.g. pandas, matplotlib):\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	1.	}Create a schema for a transfer object using the above data fields.\
+{\listtext	2.	}Create code that randomly populates a data frame / array / table of transfers.\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1\cf0 {\listtext	a.	}This code should accept an input parameter for how many records to generate.  For example, an input of 5000 would indicate that 5000 transfers should be randomly generated.\
+{\listtext	b.	}This code should accept an input parameter that indicates how many peer records to simulate.  For example, an input of 0.8 would indicate that ~80% of randomly generated transfer records should be of type 
+\f1\b peer
+\f0\b0 .  \
+{\listtext	c.	}This code should accept an input parameter that indicates how many peers (source_ids) are available.  When generating a peer record, the source_id can be one of these N peers.\
+{\listtext	d.	}Assume sizes range from 1MB to 10MB\
+{\listtext	e.	}Assume transfers happen once every ~5 seconds and durations range between 100 and 400 milliseconds.  Typically peer transfers will be much shorter than origin transfers.\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls2\ilvl0\cf0 {\listtext	3.	}Create some visualizations of the generated dataset that answer the following questions:\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls2\ilvl1\cf0 {\listtext	a.	}How much bandwidth was saved for the customer?  (peer bytes / total bytes)\
+{\listtext	b.	}How did transfer durations between 
+\f1\b peer
+\f0\b0  and 
+\f1\b origin
+\f0\b0  compare?\
+{\listtext	c.	}How much bandwidth was consumed over time (Mbps)?  How was this split across 
+\f1\b peer
+\f0\b0  and 
+\f1\b origin
+\f0\b0  bandwidth?\
+{\listtext	d.	}What other visualizations might we show the customer to demonstrate our value?\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+
+\f1\b SQL Questions
+\f0\b0 :\
+\
+Now that we\'92ve generated our dataset and explored it in python, lets get it into SQL so we can productize these visualizations.\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	1.	}Create a schema for a 
+\f1\b transfer
+\f0\b0  table with the appropriate data fields.\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls3\ilvl1\cf0 {\listtext	a.	}Explain any primary keys or indexes you choose to put on the table.\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	2.	}How might you get your dataset from python into SQL?\
+{\listtext	3.	}Create a schema for a second table called 
+\f1\b node
+\f0\b0 .  This table should have the following fields:\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls3\ilvl1\cf0 {\listtext	a.	}id : string 	(the UUID of the node, will match either 
+\f1\b source_id
+\f0\b0  or 
+\f1\b dest_id
+\f0\b0  in the transfer table)\
+{\listtext	b.	}name: string 	(the name of the employee representing that node, e.g. \'93Joe\'94, \'93Carol\'94, \'93Bob\'94, etc.)\
+{\listtext	c.	}office: string	(the name of the office where the employee works, e.g. \'93Boston HQ\'94, \'93Chicago Branch\'94, etc.)\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	4.	}Write a query that shows how many bytes one employee downloaded from another.  e.g.:\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls3\ilvl1\cf0 {\listtext	a.	}Bob downloaded 100MB from Carol\
+{\listtext	b.	}Bob downloaded 80MB from Joe\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls3\ilvl0\cf0 {\listtext	5.	}Write a query that shows who downloaded bytes from someone in another office, e.g.:\
+\pard\tx940\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li1440\fi-1440\pardirnatural\partightenfactor0
+\ls3\ilvl1\cf0 {\listtext	a.	}Bob (Boston HQ) downloaded bytes from Carol (Chicago Branch)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+
+\f1\b Further Thinking
+\f0\b0 \
+\
+Some topics for you to think about that we may discuss on our next call.  No need to include responses as part of this assignment.\
+\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls4\ilvl0\cf0 {\listtext	1.	}What other data/metrics might be worth collecting in this type of peer-to-peer system that would help further demonstrate Kollective\'92s value?\
+{\listtext	2.	}What kind of data architecture might you use to be able to surface these types of insights to the customer?  How would the data be collected, processed, transformed, visualized, etc.?\
+{\listtext	3.	}How might you make this system tolerant to out-of-order or duplicated records?  How might you test this system to guarantee there are no errors?\
+}
