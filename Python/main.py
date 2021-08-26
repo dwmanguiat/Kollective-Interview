@@ -1,13 +1,17 @@
 
 from Modules import config
-from Modules import generateRandomRecords
+from Modules import generateRandomRecords as gr
 
-configDict = config
-print(
-    generateRandomRecords(
+configDict = config.config
+
+df =  gr.generateRandomRecords(
     configDict["records"]
-    ,config["peerRatio"]
-    ,config["availablePeers"]
-    ,config["minSize"]
-    ,config["maxSize"]
-    ).head())
+    ,configDict["peerRatio"]
+    ,configDict["availablePeers"]
+    ,configDict["minSize"]
+    ,configDict["maxSize"]
+    )
+
+print(df.head())
+print(df.shape)
+print(df.dtypes)
