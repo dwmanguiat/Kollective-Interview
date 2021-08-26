@@ -10,6 +10,8 @@ df =  gr.generateRandomRecords(
     ,configDict["availablePeers"]
     ,configDict["minSize"]
     ,configDict["maxSize"]
+    ,configDict["minDuration"]
+    ,configDict["maxDuration"]
     )
 
 print(df.head())

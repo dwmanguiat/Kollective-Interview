@@ -7,8 +7,11 @@ import pandas as pd
 import numpy as np
 import uuid
 import datetime
+from pandas._libs.tslibs import timestamps
 
-def generateRandomRecords(numRecords, peerRatio, availablePeers, minSize, maxSize):
+from pandas._libs.tslibs.timestamps import Timestamp
+
+def generateRandomRecords(numRecords, peerRatio, availablePeers, minSize, maxSize, minDuration, maxDuration):
     # define column names
     cols = ['timeStamp', 'type', 'size', 'duration', 'source_id', 'dest_id']
     # set upper bound for records to create
@@ -37,6 +40,9 @@ def generateRandomRecords(numRecords, peerRatio, availablePeers, minSize, maxSiz
     # assign size
     resultDf['size'] = resultDf.apply(lambda x: np.random.randint(minSize, maxSize), axis=1)
 
+    # assign duration
+    resultDf['duration'] = resultDf.apply(lambda x: np.random.randint(minDuration, maxDuration), axis=1)
+
     # sequentially assign time stamp
     # times starting from 24 hours ago and incrementing every 5 seconds
     startTime = datetime.datetime.now() - timedelta(days = 1) 
@@ -47,7 +53,7 @@ def generateRandomRecords(numRecords, peerRatio, availablePeers, minSize, maxSiz
             resultDf.at[i, 'timeStamp'] = resultDf.at[i-1, 'timeStamp'] + timedelta(seconds= 5)
 
     # resultDf = resultDf.astype(
-    #     {"timeStamp": object
+    #     {"timeStamp": timestamps
     #     ,"type": str
     #     ,"size": int
     #     ,"duration": int

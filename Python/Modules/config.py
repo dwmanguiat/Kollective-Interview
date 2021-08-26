@@ -5,6 +5,8 @@ config = {
     ,"availablePeers": 10
     ,"minSize": 1
     ,"maxSize": 10
+    ,"minDuration": 100
+    ,"maxDuration": 400
     
     
 }
