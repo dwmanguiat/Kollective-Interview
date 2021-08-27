@@ -14,4 +14,4 @@ CREATE TABLE 'transfer' (
 CREATE idx_transfer_transfer_id on transfer (transfer_id); --MySQL does not have this option, but in SQL server for examle this would be a clustered index
 CREATE idx_transfer_source_id on transfer (source_id);
 CREATE idx_transfer_destination_id on transfer (destination_id);
-CREATE idx_transfer_timestamp on transfer (timestamp)
+CREATE idx_transfer_timestamp on transfer (timestamp);
