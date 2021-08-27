@@ -13,7 +13,6 @@ GROUP BY
     ,n_dest.name
 
 -- Question 5
-
 SELECT
     n_source.name as SourceName
     n_source.offie as SourceOffice
