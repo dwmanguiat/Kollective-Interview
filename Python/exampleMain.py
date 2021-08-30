@@ -16,4 +16,3 @@ df =  gr.generateRandomRecords(
 
 print(df.head())
 print(df.shape)
-print(df.dtypes)

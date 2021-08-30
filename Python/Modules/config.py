@@ -1,5 +1,5 @@
 config = {
-    "records": 1000
+    "records": 5000
     ,"types": ['origin', 'peer']
     ,"peerRatio": 0.8
     ,"availablePeers": 10

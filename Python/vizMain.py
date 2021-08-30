@@ -15,3 +15,5 @@ dataSet =  gr.generateRandomRecords(
     )
 
 gv.bandwidthOverTimePlot(dataSet)
+gv.dataSavingPlot(dataSet)
+gv.peerVsOriginDurationPlot(dataSet)
